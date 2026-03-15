@@ -13,18 +13,19 @@ export async function getDashboardData(userId: string) {
     const lastMonth = currentMonth === 1 ? 12 : currentMonth - 1;
     const lastMonthYear = currentMonth === 1 ? currentYear - 1 : currentYear;
 
-    const [user, categories, people, projects, incomes, expenses, budget] = await Promise.all([
-        prisma.user.findUnique({
-            where: { UserID: id },
-            select: {
-                UserID: true,
-                UserName: true,
-                EmailAddress: true,
-                RoleID: true,
-                MobileNo: true,
-                ProfileImage: true,
-            },
-        }),
+    const user = await prisma.user.findUnique({
+        where: { UserID: id },
+        select: {
+            UserID: true,
+            UserName: true,
+            EmailAddress: true,
+            RoleID: true,
+            MobileNo: true,
+            ProfileImage: true,
+        },
+    });
+
+    const [categories, people, projects] = await Promise.all([
         prisma.category.findMany({
             where: { UserID: id, IsActive: true },
             select: { CategoryID: true, CategoryName: true },
@@ -38,6 +39,9 @@ export async function getDashboardData(userId: string) {
             where: { UserID: id, IsActive: true },
             select: { ProjectID: true, ProjectName: true },
         }),
+    ]);
+
+    const [incomes, expenses, budget] = await Promise.all([
         prisma.income.findMany({
             where: { UserID: id },
             orderBy: { IncomeDate: "desc" },
