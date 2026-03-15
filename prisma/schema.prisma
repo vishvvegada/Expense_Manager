@@ -1,0 +1,187 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Role {
+  RoleID   Int    @id @default(autoincrement())
+  RoleName String @db.VarChar(50)
+
+  users User[]
+  
+  @@map("roles")
+}
+
+model User {
+  UserID       Int      @id @default(autoincrement())
+  RoleID       Int
+  UserName     String   @db.VarChar(250)
+  EmailAddress String   @db.VarChar(500)
+  Password     String   @db.VarChar(50)
+  MobileNo     String   @db.VarChar(50)
+  ProfileImage String?  @db.VarChar(500)
+  Created      DateTime
+  Modified     DateTime
+
+  role          Role          @relation(fields: [RoleID], references: [RoleID])
+  peoples       People[]
+  categories    Category[]
+  subCategories SubCategory[] 
+  projects      Project[]
+  expenses      Expense[]
+  incomes       Income[]
+  budgets       Budget[]
+
+  @@map("users")
+}
+
+model People {
+  PeopleID    Int      @id @default(autoincrement())
+  PeopleCode  String?  @db.VarChar(50)
+  Password    String   @db.VarChar(50)
+  PeopleName  String   @db.VarChar(250)
+  Email       String   @db.VarChar(150)
+  MobileNo    String   @db.VarChar(50)
+  Description String?  @db.VarChar(500)
+  UserID      Int
+  Created     DateTime
+  Modified    DateTime
+  IsActive    Boolean?
+
+  user     User      @relation(fields: [UserID], references: [UserID])
+  expenses Expense[]
+  incomes  Income[]
+
+  @@map("peoples")
+}
+
+model Category {
+  CategoryID   Int      @id @default(autoincrement())
+  CategoryName String   @db.VarChar(250)
+  LogoPath     String?  @db.VarChar(250)
+  IsExpense    Boolean
+  IsIncome     Boolean
+  IsActive     Boolean
+  Description  String?  @db.VarChar(500)
+  UserID       Int
+  Created      DateTime
+  Modified     DateTime
+  Sequence     Decimal? @db.Decimal(5, 2)
+
+  user          User          @relation(fields: [UserID], references: [UserID])
+  subCategories SubCategory[]
+  expenses      Expense[]
+  incomes       Income[]
+  budgets       Budget[]
+
+  @@map("categories")
+}
+
+model SubCategory {
+  SubCategoryID   Int      @id @default(autoincrement())
+  CategoryID      Int
+  SubCategoryName String   @db.VarChar(250)
+  LogoPath        String?  @db.VarChar(250)
+  IsExpense       Boolean
+  IsIncome        Boolean
+  IsActive        Boolean
+  Description     String?  @db.VarChar(500)
+  UserID          Int
+  Created         DateTime
+  Modified        DateTime
+  Sequence        Decimal? @db.Decimal(5, 2)
+
+  category Category  @relation(fields: [CategoryID], references: [CategoryID])
+  user     User      @relation(fields: [UserID], references: [UserID])
+  expenses Expense[]
+  incomes  Income[]
+
+  @@map("sub_categories")
+}
+
+model Project {
+  ProjectID        Int       @id @default(autoincrement())
+  ProjectName      String    @db.VarChar(250)
+  ProjectLogo      String?   @db.VarChar(250)
+  ProjectStartDate DateTime?
+  ProjectEndDate   DateTime?
+  ProjectDetail    String?   @db.VarChar(500)
+  Description      String?   @db.VarChar(500)
+  UserID           Int
+  Created          DateTime
+  Modified         DateTime
+  IsActive         Boolean?
+
+  user     User      @relation(fields: [UserID], references: [UserID])
+  expenses Expense[]
+  incomes  Income[]
+
+  @@map("projects")
+}
+
+model Expense {
+  ExpenseID      Int      @id @default(autoincrement())
+  ExpenseDate    DateTime
+  CategoryID     Int?
+  SubCategoryID  Int?
+  PeopleID       Int
+  ProjectID      Int?
+  Amount         Decimal  @db.Decimal(10, 2)
+  ExpenseDetail  String?  @db.VarChar(500)
+  AttachmentPath String?  @db.VarChar(250)
+  Description    String?  @db.VarChar(500)
+  UserID         Int
+  Created        DateTime
+  Modified       DateTime
+
+  category    Category?    @relation(fields: [CategoryID], references: [CategoryID])
+  subCategory SubCategory? @relation(fields: [SubCategoryID], references: [SubCategoryID])
+  people      People       @relation(fields: [PeopleID], references: [PeopleID])
+  project     Project?     @relation(fields: [ProjectID], references: [ProjectID])
+  user        User         @relation(fields: [UserID], references: [UserID])
+
+  @@map("expenses")
+}
+
+model Income {
+  IncomeID       Int      @id @default(autoincrement())
+  IncomeDate     DateTime
+  CategoryID     Int?
+  SubCategoryID  Int?
+  PeopleID       Int
+  ProjectID      Int?
+  Amount         Decimal  @db.Decimal(10, 2)
+  IncomeDetail   String?  @db.VarChar(500)
+  AttachmentPath String?  @db.VarChar(250)
+  Description    String?  @db.VarChar(500)
+  UserID         Int
+  Created        DateTime
+  Modified       DateTime
+
+  category    Category?    @relation(fields: [CategoryID], references: [CategoryID])
+  subCategory SubCategory? @relation(fields: [SubCategoryID], references: [SubCategoryID])
+  people      People       @relation(fields: [PeopleID], references: [PeopleID])
+  project     Project?     @relation(fields: [ProjectID], references: [ProjectID])
+  user        User         @relation(fields: [UserID], references: [UserID])
+
+  @@map("incomes")
+}
+
+model Budget {
+  BudgetID   Int      @id @default(autoincrement())
+  Amount     Decimal  @db.Decimal(10, 2)
+  Month      Int
+  Year       Int
+  CategoryID Int?
+  UserID     Int
+  Created    DateTime @default(now())
+  Modified   DateTime @updatedAt
+
+  user     User      @relation(fields: [UserID], references: [UserID])
+  category Category? @relation(fields: [CategoryID], references: [CategoryID])
+
+  @@map("budgets")
+}
