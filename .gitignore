@@ -23,9 +23,6 @@
 # misc
 .DS_Store
 *.pem
-.env
-next-env.d.ts
-tsconfig.tsbuildinfo
 
 
 
