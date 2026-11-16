@@ -108,7 +108,7 @@ export default async function TransactionsPage(props: PageProps) {
                             <Wallet className="w-5 h-5 text-white" />
                         </div>
                     </div>
-                    <h3 className="text-3xl font-bold relative z-10">${netBalance.toFixed(2)}</h3>
+                    <h3 className="text-3xl font-bold relative z-10">₹{netBalance.toFixed(2)}</h3>
                 </div>
 
                 {/* Total Income Card */}
@@ -119,7 +119,7 @@ export default async function TransactionsPage(props: PageProps) {
                             <ArrowUpRight className="w-5 h-5" />
                         </div>
                     </div>
-                    <h3 className="text-3xl font-bold text-gray-900 relative z-10">${totalIncome.toFixed(2)}</h3>
+                    <h3 className="text-3xl font-bold text-gray-900 relative z-10">₹{totalIncome.toFixed(2)}</h3>
                 </div>
 
                 {/* Total Expense Card */}
@@ -130,7 +130,7 @@ export default async function TransactionsPage(props: PageProps) {
                             <ArrowDownRight className="w-5 h-5" />
                         </div>
                     </div>
-                    <h3 className="text-3xl font-bold text-gray-900 relative z-10">${totalExpense.toFixed(2)}</h3>
+                    <h3 className="text-3xl font-bold text-gray-900 relative z-10">₹{totalExpense.toFixed(2)}</h3>
                 </div>
             </div>
 

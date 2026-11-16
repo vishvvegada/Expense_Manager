@@ -45,7 +45,7 @@ export default async function AdminReportsPage() {
                         </div>
                         <div>
                             <p className="text-sm text-gray-500">Total Volume (In)</p>
-                            <h3 className="text-2xl font-bold text-gray-900">${stats.totalIncome.toLocaleString()}</h3>
+                            <h3 className="text-2xl font-bold text-gray-900">₹{stats.totalIncome.toLocaleString()}</h3>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@ export default async function AdminReportsPage() {
                         </div>
                         <div>
                             <p className="text-sm text-gray-500">Total Volume (Out)</p>
-                            <h3 className="text-2xl font-bold text-gray-900">${stats.totalExpense.toLocaleString()}</h3>
+                            <h3 className="text-2xl font-bold text-gray-900">₹{stats.totalExpense.toLocaleString()}</h3>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@ export default async function AdminReportsPage() {
                     </div>
                     <div className="text-center md:text-right">
                         <h3 className={`text-4xl font-bold ${stats.netBalance >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                            {stats.netBalance >= 0 ? '+' : ''}${stats.netBalance.toLocaleString()}
+                            {stats.netBalance >= 0 ? '+' : ''}₹{stats.netBalance.toLocaleString()}
                         </h3>
                     </div>
                 </div>

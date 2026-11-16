@@ -169,7 +169,7 @@ export default function UserTransactionList({ transactions, userId, categories, 
                             <div className={`font-bold text-xl text-right tracking-tight ${
                                 t.type === 'INCOME' ? 'text-emerald-600' : 'text-rose-600'
                             }`}>
-                                {t.type === 'INCOME' ? '+' : '-'}${Number(t.amount).toFixed(2)}
+                                {t.type === 'INCOME' ? '+' : '-'}₹{Number(t.amount).toFixed(2)}
                             </div>
                             
                             <div className="flex items-center gap-1 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">

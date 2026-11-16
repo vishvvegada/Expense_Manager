@@ -119,7 +119,7 @@ export default function AddTransactionModal({ isOpen, onClose, userId, categorie
                         <div className="space-y-1.5">
                             <label className="text-sm font-semibold text-gray-700">Amount</label>
                             <div className="relative">
-                                <span className={`absolute left-4 top-1/2 -translate-y-1/2 font-bold ${type === 'INCOME' ? 'text-emerald-500' : 'text-rose-500'}`}>$</span>
+                                <span className={`absolute left-4 top-1/2 -translate-y-1/2 font-bold ${type === 'INCOME' ? 'text-emerald-500' : 'text-rose-500'}`}>₹</span>
                                 <input
                                     type="number"
                                     required

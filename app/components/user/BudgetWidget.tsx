@@ -36,16 +36,16 @@ export default function BudgetWidget({ budget, currentMonthExpenses, userId }: B
                             {budgetAmount > 0 ? (
                                 <>
                                     <p className="text-3xl font-bold font-mono">
-                                        ${currentMonthExpenses.toLocaleString()}
-                                        <span className="text-lg text-indigo-200 font-sans ml-1">/ ${budgetAmount.toLocaleString()}</span>
+                                        ₹{currentMonthExpenses.toLocaleString()}
+                                        <span className="text-lg text-indigo-200 font-sans ml-1">/ ₹{budgetAmount.toLocaleString()}</span>
                                     </p>
                                     <p className="text-indigo-200 text-sm mt-1">
-                                        ${remaining.toLocaleString()} remaining
+                                        ₹{remaining.toLocaleString()} remaining
                                     </p>
                                 </>
                             ) : (
                                 <>
-                                    <p className="text-3xl font-bold">$0.00</p>
+                                    <p className="text-3xl font-bold">₹0.00</p>
                                     <p className="text-indigo-200 text-sm mt-1">Budget not set</p>
                                 </>
                             )}

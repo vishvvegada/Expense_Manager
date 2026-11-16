@@ -74,14 +74,14 @@ export default async function AdminUserPage({ params }: PageProps) {
                             <TrendingUp className="w-5 h-5" />
                             <span className="font-medium">Total Income</span>
                         </div>
-                        <p className="text-3xl font-bold text-gray-900">${stats.totalIncome.toLocaleString()}</p>
+                        <p className="text-3xl font-bold text-gray-900">₹{stats.totalIncome.toLocaleString()}</p>
                     </div>
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
                         <div className="flex items-center gap-3 text-red-600 mb-2">
                             <TrendingDown className="w-5 h-5" />
                             <span className="font-medium">Total Expense</span>
                         </div>
-                        <p className="text-3xl font-bold text-gray-900">${stats.totalExpense.toLocaleString()}</p>
+                        <p className="text-3xl font-bold text-gray-900">₹{stats.totalExpense.toLocaleString()}</p>
                     </div>
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
                         <div className="flex items-center gap-3 text-blue-600 mb-2">
@@ -89,7 +89,7 @@ export default async function AdminUserPage({ params }: PageProps) {
                             <span className="font-medium">Net Balance</span>
                         </div>
                         <p className={`text-3xl font-bold ${stats.balance >= 0 ? 'text-gray-900' : 'text-red-600'}`}>
-                            ${stats.balance.toLocaleString()}
+                            ₹{stats.balance.toLocaleString()}
                         </p>
                     </div>
                 </div>

@@ -93,7 +93,7 @@ export default function TransactionList({ transactions }: TransactionListProps) 
                                     {tx.description || tx.detail || '-'}
                                 </td>
                                 <td className={`px-6 py-4 text-sm font-bold text-right ${tx.type === 'income' ? 'text-green-600' : 'text-red-600'}`}>
-                                    {tx.type === 'income' ? '+' : '-'}${Math.abs(tx.amount).toFixed(2)}
+                                    {tx.type === 'income' ? '+' : '-'}₹{Math.abs(tx.amount).toFixed(2)}
                                 </td>
                             </tr>
                         ))}

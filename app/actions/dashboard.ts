@@ -95,7 +95,7 @@ export async function getDashboardData(userId: string) {
     if (budget && currentMonthExpenses > Number(budget.Amount)) {
         insights.push({
             type: "danger",
-            text: `You have exceeded your monthly budget of $${Number(budget.Amount).toLocaleString()}.`
+            text: `You have exceeded your monthly budget of ₹${Number(budget.Amount).toLocaleString()}.`
         });
     } else if (budget) {
         const percentUsed = (currentMonthExpenses / Number(budget.Amount)) * 100;

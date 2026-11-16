@@ -1,7 +1,7 @@
 import { getAdminData } from "@/app/actions/admin";
 import {
   Users,
-  DollarSign,
+  IndianRupee,
   TrendingUp,
   TrendingDown,
 } from "lucide-react";
@@ -35,22 +35,22 @@ export default async function AdminDashboard() {
         />
         <StatCard
           title="Total Income"
-          value={`$${stats.totalIncome.toFixed(2)}`}
+          value={`₹${stats.totalIncome.toFixed(2)}`}
           icon={<TrendingUp className="w-8 h-8 text-green-600" />}
           trend="Lifetime Earnings"
           color="bg-green-50 border-green-200"
         />
         <StatCard
           title="Total Expenses"
-          value={`$${stats.totalExpense.toFixed(2)}`}
+          value={`₹${stats.totalExpense.toFixed(2)}`}
           icon={<TrendingDown className="w-8 h-8 text-red-600" />}
           trend="Lifetime Spending"
           color="bg-red-50 border-red-200"
         />
         <StatCard
           title="Net Balance"
-          value={`$${stats.balance.toFixed(2)}`}
-          icon={<DollarSign className="w-8 h-8 text-purple-600" />}
+          value={`₹${stats.balance.toFixed(2)}`}
+          icon={<IndianRupee className="w-8 h-8 text-purple-600" />}
           trend="Current Holdings"
           color="bg-purple-50 border-purple-200"
         />

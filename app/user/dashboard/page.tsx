@@ -82,7 +82,7 @@ export default async function UserDashboard() {
             </div>
             <div>
               <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Total Income</p>
-              <h3 className="text-4xl font-black text-gray-900 tracking-tight">${stats.totalIncome.toLocaleString()}</h3>
+              <h3 className="text-4xl font-black text-gray-900 tracking-tight">₹{stats.totalIncome.toLocaleString()}</h3>
             </div>
           </div>
 
@@ -99,7 +99,7 @@ export default async function UserDashboard() {
             </div>
             <div>
               <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Total Expense</p>
-              <h3 className="text-4xl font-black text-gray-900 tracking-tight">${stats.totalExpense.toLocaleString()}</h3>
+              <h3 className="text-4xl font-black text-gray-900 tracking-tight">₹{stats.totalExpense.toLocaleString()}</h3>
             </div>
           </div>
 
@@ -117,7 +117,7 @@ export default async function UserDashboard() {
             <div>
               <p className={`text-sm font-bold uppercase tracking-widest mb-1 ${stats.balance >= 0 ? 'text-gray-400' : 'text-red-400'}`}>Net Balance</p>
               <h3 className={`text-4xl font-black tracking-tight ${stats.balance >= 0 ? 'text-gray-900' : 'text-red-600'}`}>
-                ${stats.balance.toLocaleString()}
+                ₹{stats.balance.toLocaleString()}
               </h3>
             </div>
           </div>
@@ -244,7 +244,7 @@ export default async function UserDashboard() {
                 </div>
                 <div className="text-right z-10">
                   <span className={`font-black text-2xl md:text-3xl tracking-tight block ${t.type === 'INCOME' ? 'text-emerald-500' : 'text-rose-500'}`}>
-                    {t.type === 'INCOME' ? '+' : '-'}${t.amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    {t.type === 'INCOME' ? '+' : '-'}₹{t.amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { Calendar, DollarSign, FileText, Tag, User as UserIcon, Briefcase, Plus, X } from "lucide-react";
+import { Calendar, IndianRupee, FileText, Tag, User as UserIcon, Briefcase, Plus, X } from "lucide-react";
 
 type Option = {
     id: number;
@@ -68,7 +68,7 @@ export default function TransactionForm({
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Amount</label>
                     <div className="relative">
-                        <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                        <IndianRupee className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                         <input
                             type="number"
                             name="amount"

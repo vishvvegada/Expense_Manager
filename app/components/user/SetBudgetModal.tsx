@@ -41,7 +41,7 @@ export default function SetBudgetModal({ isOpen, onClose, userId, currentBudget 
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Monthly Budget Amount ($)
+                        Monthly Budget Amount (₹)
                     </label>
                     <input
                         type="number"
